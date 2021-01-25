@@ -4,6 +4,7 @@ package org.zrz.ftgo.orderservice.domain;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.zrz.ftgo.common.Address;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -18,7 +19,6 @@ public class DeliveryInformation {
     private Address deliveryAddress;
 
     public DeliveryInformation(){}
-
     public DeliveryInformation(LocalDateTime deliveryTime,Address deliveryAddress){
         this.deliveryTime = deliveryTime;
         this.deliveryAddress = deliveryAddress;

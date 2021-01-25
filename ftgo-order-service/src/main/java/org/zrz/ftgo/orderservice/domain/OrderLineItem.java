@@ -70,4 +70,9 @@ public class OrderLineItem {
     public void setPrice(Money price) {
         this.price = price;
     }
+
+
+    public Money getTotal(){
+        return price.multiply(quantity);
+    }
 }

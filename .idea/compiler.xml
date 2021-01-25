@@ -7,11 +7,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ftgo-order-service" />
+        <module name="ftgo-application" />
+        <module name="ftgo-common" />
+        <module name="ftgo-order-service-api" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ftgo-application" target="1.5" />
+      <module name="ftgo-common" target="1.5" />
       <module name="ftgo-order-service" target="8" />
+      <module name="ftgo-order-service-api" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
