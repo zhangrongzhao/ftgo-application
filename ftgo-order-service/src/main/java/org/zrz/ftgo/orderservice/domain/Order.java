@@ -1,13 +1,27 @@
 package org.zrz.ftgo.orderservice.domain;
 
+import org.zrz.ftgo.orderservice.events.OrderAuthorized;
+import org.zrz.ftgo.orderservice.events.OrderCancelled;
+import org.zrz.ftgo.orderservice.events.OrderDomainEvent;
+import org.zrz.ftgo.orderservice.events.OrderRejected;
+import org.zrz.ftgo.orderservice.exceptions.UnsupportedStateTransitionException;
+
 import javax.persistence.*;
 import java.util.Collections;
 import java.util.List;
+
+import static java.util.Collections.emptyList;
+import static java.util.Collections.singletonList;
 
 @Entity
 @Table(name = "orders")
 @Access(AccessType.FIELD)
 public class Order {
+
+//    public static ResultWithDomainEvents<Order,OrderDomainEvent> createOrder(long consumerId,Restaurant restaurant,DeliveryInformation deliveryInformation,List<OrderLineItem> orderLineItems){
+//
+//    }
+
     @Id
     @GeneratedValue
     private Long id;
@@ -33,7 +47,7 @@ public class Order {
     @Embedded
     private Money orderMinimum = new Money(Integer.MAX_VALUE);
 
-    private Order(){ }
+    public Order(){ }
     public Order(long consumerId, long restaurantId, DeliveryInformation deliveryInformation, List<OrderLineItem> orderLineItems){
         this.consumerId=consumerId;
         this.restaurantId=restaurantId;
@@ -93,40 +107,68 @@ public class Order {
         switch(state){
             case CANCEL_PENDING:
                 this.state = OrderState.CANCELLED;
-                return Collections.singletonList(new OrderCancelled());
+                return singletonList(new OrderCancelled());
             default:
                 throw new UnsupportedStateTransitionException(state);
         }
 
     }
-    public List<OrderDomainEvent> noteApproved(){
+    public List<OrderDomainEvent> noteApproved() {
         switch(state){
             case APPROVAL_PENDING:
                 this.state=OrderState.APPROVED;
-                return Collections.singletonList(new OrderAuthorized());
+                return singletonList(new OrderAuthorized());
             default:
                 throw new UnsupportedStateTransitionException(state);
         }
     }
-    public List<OrderDomainEvent> noteRejected(){
+    public List<OrderDomainEvent> noteRejected() {
         switch(state){
             case APPROVAL_PENDING:
                 this.state=OrderState.REJECTED;
-                return Collections.singletonList(new OrderRejected());
+                return singletonList(new OrderRejected());
             default:
                 throw new UnsupportedStateTransitionException(state);
         }
 
     }
     public List<OrderDomainEvent> noteReversingAuthorization(){return null;}
-    public ResultWithDomainEvents<LineItemQuantityChange,OrderDomainEvent> revise(OrderRevision orderRevision){
+//    public ResultWithDomainEvents<LineItemQuantityChange,OrderDomainEvent> revise(OrderRevision orderRevision) {
+//        switch(state){
+//            case APPROVED:
+//                LineItemQuantityChange change = orderLineItems.lineItemQuantityChange(orderRevision);
+//                if(change.newOrderTotal.isGreaterThanOrEqual(orderMinimum)){
+//                     throw new OrderMinimumNotMetException();
+//                }
+//                this.state = OrderState.REVISION_PENDING;
+//                return new ResultWithDomainEvents<>(change,singletonList(new OrderRevisionProposed(orderRevision,change.currentOrderTotal,change.newOrderTotal)));
+//            default:
+//                throw new UnsupportedStateTransitionException(state);
+//        }
+//
+//    }
+    public List<OrderDomainEvent> rejectRevision(){
         switch(state){
-            case OrderState.APPROVED:
-                LineItemQuantityChange change = orderLineItems.lineItemQuantityChange(orderRevision);
+            case REVISION_PENDING:
+                this.state = OrderState.APPROVED;
+                return emptyList();
+            default:
+                throw new UnsupportedStateTransitionException(state);
         }
-
     }
-    public List<OrderDomainEvent> rejectRevision(){ return null; }
-    public List<OrderDomainEvent> confirmRevision(OrderRevision orderRevision){ return null;}
+    public List<OrderDomainEvent> confirmRevision(OrderRevision orderRevision){
+        switch(state){
+            case REVISION_PENDING:
+                LineItemQuantityChange lineItemQuantityChange=orderLineItems.lineItemQuantityChange(orderRevision);
+                orderRevision.getDeliveryInformation().ifPresent(newDi->this.deliveryInformation=newDi);
+                if(orderRevision.getRevisedOrderLineItems()!=null && orderRevision.getRevisedOrderLineItems().size()>0){
+                    orderLineItems.updateLineItems(orderRevision);
+                }
+                this.state=OrderState.APPROVED;
+                return singletonList(new OrderRevised(orderRevision,lineItemQuantityChange.currentOrderTotal,lineItemQuantityChange.newOrderTotal));
+            default:
+                throw new UnsupportedStateTransitionException(state);
+        }
+    }
     /******领域业务******end*****/
 }

@@ -1,4 +1,4 @@
-package org.zrz.ftgo.common;
+package org.zrz.ftgo.orderservice.domain;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;

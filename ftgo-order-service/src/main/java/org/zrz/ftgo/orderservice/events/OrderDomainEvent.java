@@ -1,6 +1,4 @@
-package org.zrz.ftgo.orderservice.domain;
-
-import org.zrz.ftgo.common.DomainEvent;
+package org.zrz.ftgo.orderservice.events;
 
 /**订单领域事件**/
 public interface OrderDomainEvent extends DomainEvent {

@@ -4,11 +4,11 @@ package org.zrz.ftgo.orderservice.domain;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.zrz.ftgo.common.Address;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Embeddable
 @Access(AccessType.FIELD)
 public class DeliveryInformation {
     private LocalDateTime deliveryTime;

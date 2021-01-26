@@ -7,12 +7,12 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import javax.persistence.Embeddable;
 import java.math.BigDecimal;
 
-//@Embeddable
+@Embeddable
 public class Money {
     public static Money ZERO=new Money(0);
     private BigDecimal amount;
 
-    private Money(){ }
+    public Money(){ }
     public Money(BigDecimal amount){this.amount = amount;}
     public Money(String s){this.amount=new BigDecimal(s);}
     public Money(int i){this.amount=new BigDecimal(i);}
@@ -41,7 +41,7 @@ public class Money {
         return new Money(amount.add(delta.amount));
     }
 
-    public boolean isGreaterThanEqual(Money other){
+    public boolean isGreaterThanOrEqual(Money other){
         return amount.compareTo(other.amount)>=0;
     }
 

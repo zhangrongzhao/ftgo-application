@@ -44,4 +44,7 @@ public class RevisedOrderLineItem {
         return ToStringBuilder.reflectionToString(this);
     }
 
+
+    public static interface DomainEvent {
+    }
 }
