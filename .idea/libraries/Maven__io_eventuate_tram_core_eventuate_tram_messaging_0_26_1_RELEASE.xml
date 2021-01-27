@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: io.eventuate.tram.core:eventuate-tram-messaging:0.26.1.RELEASE">
+    <CLASSES>
+      <root url="jar://D:/software/maven/apache-maven-repository/io/eventuate/tram/core/eventuate-tram-messaging/0.26.1.RELEASE/eventuate-tram-messaging-0.26.1.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/software/maven/apache-maven-repository/io/eventuate/tram/core/eventuate-tram-messaging/0.26.1.RELEASE/eventuate-tram-messaging-0.26.1.RELEASE-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/software/maven/apache-maven-repository/io/eventuate/tram/core/eventuate-tram-messaging/0.26.1.RELEASE/eventuate-tram-messaging-0.26.1.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

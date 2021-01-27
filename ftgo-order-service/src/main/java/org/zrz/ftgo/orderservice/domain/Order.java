@@ -1,9 +1,8 @@
 package org.zrz.ftgo.orderservice.domain;
 
-import org.zrz.ftgo.orderservice.events.OrderAuthorized;
-import org.zrz.ftgo.orderservice.events.OrderCancelled;
-import org.zrz.ftgo.orderservice.events.OrderDomainEvent;
-import org.zrz.ftgo.orderservice.events.OrderRejected;
+import io.eventuate.tram.events.aggregates.ResultWithDomainEvents;
+import org.zrz.ftgo.orderservice.events.*;
+import org.zrz.ftgo.orderservice.exceptions.OrderMinimumNotMetException;
 import org.zrz.ftgo.orderservice.exceptions.UnsupportedStateTransitionException;
 
 import javax.persistence.*;
@@ -18,9 +17,15 @@ import static java.util.Collections.singletonList;
 @Access(AccessType.FIELD)
 public class Order {
 
-//    public static ResultWithDomainEvents<Order,OrderDomainEvent> createOrder(long consumerId,Restaurant restaurant,DeliveryInformation deliveryInformation,List<OrderLineItem> orderLineItems){
-//
-//    }
+    public static ResultWithDomainEvents<Order,OrderDomainEvent>
+    createOrder(long consumerId,Restaurant restaurant,DeliveryInformation deliveryInformation,List<OrderLineItem> orderLineItems){
+        Order order = new Order(consumerId,restaurant.getId(),deliveryInformation,orderLineItems);
+        List<OrderDomainEvent> events = singletonList(new OrderCreated(
+                new OrderDetails(consumerId,restaurant.getId(),orderLineItems,order.getOrderTotal()),
+                deliveryInformation.getDeliveryAddress(),
+                restaurant.getName()));
+        return new ResultWithDomainEvents<Order, OrderDomainEvent>(order,events);
+    }
 
     @Id
     @GeneratedValue
@@ -133,20 +138,19 @@ public class Order {
 
     }
     public List<OrderDomainEvent> noteReversingAuthorization(){return null;}
-//    public ResultWithDomainEvents<LineItemQuantityChange,OrderDomainEvent> revise(OrderRevision orderRevision) {
-//        switch(state){
-//            case APPROVED:
-//                LineItemQuantityChange change = orderLineItems.lineItemQuantityChange(orderRevision);
-//                if(change.newOrderTotal.isGreaterThanOrEqual(orderMinimum)){
-//                     throw new OrderMinimumNotMetException();
-//                }
-//                this.state = OrderState.REVISION_PENDING;
-//                return new ResultWithDomainEvents<>(change,singletonList(new OrderRevisionProposed(orderRevision,change.currentOrderTotal,change.newOrderTotal)));
-//            default:
-//                throw new UnsupportedStateTransitionException(state);
-//        }
-//
-//    }
+    public ResultWithDomainEvents<LineItemQuantityChange,OrderDomainEvent> revise(OrderRevision orderRevision) {
+        switch(state){
+            case APPROVED:
+                LineItemQuantityChange change = orderLineItems.lineItemQuantityChange(orderRevision);
+                if(change.newOrderTotal.isGreaterThanOrEqual(orderMinimum)){
+                     throw new OrderMinimumNotMetException();
+                }
+                this.state = OrderState.REVISION_PENDING;
+                return new ResultWithDomainEvents<>(change,singletonList(new OrderRevisionProposed(orderRevision,change.currentOrderTotal,change.newOrderTotal)));
+            default:
+                throw new UnsupportedStateTransitionException(state);
+        }
+    }
     public List<OrderDomainEvent> rejectRevision(){
         switch(state){
             case REVISION_PENDING:

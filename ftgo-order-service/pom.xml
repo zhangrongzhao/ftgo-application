@@ -39,5 +39,24 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.11</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.eventuate.tram.core/eventuate-tram-spring-commands -->
+        <dependency>
+            <groupId>io.eventuate.tram.core</groupId>
+            <artifactId>eventuate-tram-spring-commands</artifactId>
+            <version>0.26.1.RELEASE</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.eventuate.tram.core/eventuate-tram-spring-events -->
+        <dependency>
+            <groupId>io.eventuate.tram.core</groupId>
+            <artifactId>eventuate-tram-spring-events</artifactId>
+            <version>0.26.1.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>io.eventuate.tram.core</groupId>
+            <artifactId>eventuate-tram-aggregate-domain-events</artifactId>
+            <version>0.26.1.RELEASE</version>
+        </dependency>
     </dependencies>
 </project>
