@@ -72,15 +72,12 @@
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.11" level="project" />
     <orderEntry type="library" name="Maven: io.eventuate.tram.core:eventuate-tram-spring-commands:0.26.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: io.eventuate.tram.core:eventuate-tram-commands:0.26.1.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: io.eventuate.tram.core:eventuate-tram-messaging:0.26.1.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
     <orderEntry type="library" name="Maven: io.eventuate.common:eventuate-common-json-mapper:0.12.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: io.eventuate.common:eventuate-common-id:0.12.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.10.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.10.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.10.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.10.2" level="project" />
-    <orderEntry type="library" name="Maven: io.eventuate.tram.core:eventuate-tram-spring-messaging:0.26.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: io.eventuate.tram.core:eventuate-tram-spring-events:0.26.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: io.eventuate.tram.core:eventuate-tram-spring-events-publisher:0.26.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: io.eventuate.tram.core:eventuate-tram-spring-events-common:0.26.1.RELEASE" level="project" />
@@ -93,5 +90,14 @@
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.39" level="project" />
     <orderEntry type="library" name="Maven: org.postgresql:postgresql:42.1.4" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.microsoft.sqlserver:mssql-jdbc:7.2.1.jre8" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.tram.sagas:eventuate-tram-sagas-orchestration-simple-dsl:0.15.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.tram.sagas:eventuate-tram-sagas-spring-orchestration-simple-dsl:0.15.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.tram.sagas:eventuate-tram-sagas-spring-orchestration:0.15.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.tram.sagas:eventuate-tram-sagas-spring-common:0.15.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.common:eventuate-common-spring-jdbc:0.12.0.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.common:eventuate-common-common-spring-jdbc:0.12.0.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.tram.core:eventuate-tram-spring-messaging:0.26.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.tram.core:eventuate-tram-messaging:0.26.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
   </component>
 </module>

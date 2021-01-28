@@ -67,5 +67,27 @@
             <artifactId>eventuate-tram-sagas-orchestration</artifactId>
             <version>0.15.2.RELEASE</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.eventuate.tram.sagas/eventuate-tram-sagas-orchestration-simple-dsl -->
+        <dependency>
+            <groupId>io.eventuate.tram.sagas</groupId>
+            <artifactId>eventuate-tram-sagas-orchestration-simple-dsl</artifactId>
+            <version>0.15.2.RELEASE</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.eventuate.tram.sagas/eventuate-tram-sagas-spring-orchestration-simple-dsl -->
+        <dependency>
+            <groupId>io.eventuate.tram.sagas</groupId>
+            <artifactId>eventuate-tram-sagas-spring-orchestration-simple-dsl</artifactId>
+            <version>0.15.2.RELEASE</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.eventuate.tram.core/eventuate-tram-spring-messaging -->
+        <dependency>
+            <groupId>io.eventuate.tram.core</groupId>
+            <artifactId>eventuate-tram-spring-messaging</artifactId>
+            <version>0.26.1.RELEASE</version>
+        </dependency>
+
     </dependencies>
 </project>

@@ -95,5 +95,11 @@
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.39" level="project" />
     <orderEntry type="library" name="Maven: org.postgresql:postgresql:42.1.4" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.microsoft.sqlserver:mssql-jdbc:7.2.1.jre8" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.tram.sagas:eventuate-tram-sagas-orchestration-simple-dsl:0.15.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.tram.sagas:eventuate-tram-sagas-spring-orchestration-simple-dsl:0.15.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.tram.sagas:eventuate-tram-sagas-spring-orchestration:0.15.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.tram.sagas:eventuate-tram-sagas-spring-common:0.15.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.common:eventuate-common-spring-jdbc:0.12.0.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.common:eventuate-common-common-spring-jdbc:0.12.0.RELEASE" level="project" />
   </component>
 </module>
