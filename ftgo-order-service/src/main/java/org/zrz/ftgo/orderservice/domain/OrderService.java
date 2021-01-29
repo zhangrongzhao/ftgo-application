@@ -5,6 +5,8 @@ import io.eventuate.tram.sagas.orchestration.SagaInstanceFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.zrz.ftgo.orderservice.events.OrderDomainEvent;
+import org.zrz.ftgo.orderservice.sagas.createorder.CreateOrderSaga;
+import org.zrz.ftgo.orderservice.sagas.createorder.CreateOrderSagaState;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -19,32 +21,33 @@ public class OrderService {
     private OrderRepository orderRepository;
     private RestaurantRepository restaurantRepository;
     private CreateOrderSaga createOrderSaga;
-    private CancelOrderSaga cancelOrderSaga;
-    private ReviseOrderSaga reviseOrderSaga;
+    //private CancelOrderSaga cancelOrderSaga;
+    //private ReviseOrderSaga reviseOrderSaga;
     private OrderDomainEventPublisher orderAggregateEventPublisher;
-    private Optional<MeterRegistry> meterRegistry;
+    //private Optional<MeterRegistry> meterRegistry;
 
     public OrderService(SagaInstanceFactory sagaInstanceFactory,
                         OrderRepository orderRepository,
                         RestaurantRepository restaurantRepository,
                         CreateOrderSaga createOrderSaga,
-                        CancelOrderSaga cancelOrderSaga,
-                        ReviseOrderSaga reviseOrderSaga,
-                        OrderDomainEventPublisher orderAggregateEventPublisher,
-                        Optional<MeterRegistry> meterRegistry){
+                        //CancelOrderSaga cancelOrderSaga,
+                        //ReviseOrderSaga reviseOrderSaga,
+                        OrderDomainEventPublisher orderAggregateEventPublisher//,
+                        //Optional<MeterRegistry> meterRegistry
+    ){
          this.sagaInstanceFactory=sagaInstanceFactory;
          this.orderRepository=orderRepository;
-         this.restaurantRepository=restaurantRepository;
+         //this.restaurantRepository=restaurantRepository;
          this.createOrderSaga=createOrderSaga;
-         this.cancelOrderSaga=cancelOrderSaga;
-         this.reviseOrderSaga=reviseOrderSaga;
+         //this.cancelOrderSaga=cancelOrderSaga;
+         //this.reviseOrderSaga=reviseOrderSaga;
          this.orderAggregateEventPublisher=orderAggregateEventPublisher;
-         this.meterRegistry=meterRegistry;
+         //this.meterRegistry=meterRegistry;
     }
 
     @Transactional
     public Order createOrder(long consumerId,long restaurantId,DeliveryInformation deliveryInformation,List<MenuItemIdAndQuantity> lineItems){
-        Restaurant restaurant = resaurantRepository.findById(restaurantId).orElseThrow(()->new RestaurantNotFoundException(restaurantId));
+        Restaurant restaurant = restaurantRepository.findById(restaurantId).orElseThrow(()->new RestaurantNotFoundException(restaurantId));
         List<OrderLineItem> orderLineItems = makeOrderLineItems(lineItems,restaurant);
         ResultWithDomainEvents<Order, OrderDomainEvent> orderAndEvents = Order.createOrder(consumerId,restaurant,deliveryInformation,orderLineItems);
         Order order = orderAndEvents.result;
