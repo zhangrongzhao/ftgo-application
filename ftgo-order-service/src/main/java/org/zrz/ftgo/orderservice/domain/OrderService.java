@@ -89,12 +89,18 @@ public class OrderService {
 //        return order;
 //    }
 
-//    private Order updateOrder(long orderId, Function<Order,List<OrderDomainEvent>> updater){
-//        return orderRepository.findById(orderId).map(order->{
-//            orderAggregateEventPublisher.publish(order,updater.apply(order));
-//            return order;
-//        }).orElseThrow(()->new OrderNotFoundException(orderId));
-//    }
+    private Order updateOrder(long orderId, Function<Order,List<OrderDomainEvent>> updater){
+        return orderRepository.findById(orderId).map(order->{
+            orderAggregateEventPublisher.publish(order,updater.apply(order));
+            return order;
+        }).orElseThrow(()->new OrderNotFoundException(orderId));
+    }
+
+    public void approveOrder(long orderId){
+      updateOrder(orderId,Order::noteApproved);
+      meterRegistry.ifPresent(mr->mr.counter("approved_orders").increment());
+    }
+
 //
 //    public void rejectOrder(long orderId){
 //        updateOrder(orderId,Order::noteRejected);
