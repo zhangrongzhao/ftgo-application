@@ -2,6 +2,7 @@ package org.zrz.ftgo.orderservice.domain;
 
 import io.eventuate.tram.events.aggregates.ResultWithDomainEvents;
 import io.eventuate.tram.sagas.orchestration.SagaInstanceFactory;
+import io.micrometer.core.instrument.MeterRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.zrz.ftgo.orderservice.events.OrderDomainEvent;
@@ -25,7 +26,7 @@ public class OrderService {
     //private CancelOrderSaga cancelOrderSaga;
     //private ReviseOrderSaga reviseOrderSaga;
     private OrderDomainEventPublisher orderAggregateEventPublisher;
-    //private Optional<MeterRegistry> meterRegistry;
+    private Optional<MeterRegistry> meterRegistry;
 
     public OrderService(SagaInstanceFactory sagaInstanceFactory,
                         OrderRepository orderRepository,
@@ -43,7 +44,7 @@ public class OrderService {
          //this.cancelOrderSaga=cancelOrderSaga;
          //this.reviseOrderSaga=reviseOrderSaga;
          this.orderAggregateEventPublisher = orderAggregateEventPublisher;
-         //this.meterRegistry=meterRegistry;
+         this.meterRegistry = meterRegistry;
     }
 
     @Transactional
@@ -56,14 +57,14 @@ public class OrderService {
         orderAggregateEventPublisher.publish(order,orderAndEvents.events);
         OrderDetails orderDetails = new OrderDetails(consumerId,restaurantId,orderLineItems,order.getOrderTotal());
         CreateOrderSagaState data=new CreateOrderSagaState(order.getId(),orderDetails);
-        meterRegistry.create(createOrderSaga,data);
+        sagaInstanceFactory.create(createOrderSaga,data);
         meterRegistry.ifPresent(mr->mr.counter("placed_orders").increment());
         return order;
     }
 
     private List<OrderLineItem> makeOrderLineItems(List<MenuItemIdAndQuantity> lineItems, Restaurant restaurant){
         return lineItems.stream().map(li->{
-            MenuItem om = restaurant.findMenuItem(li.getMenuItemId()).orElseThrow(()->{new InvalidMenuItemIdException(li.getMenuItemId());});
+            MenuItem om = restaurant.findMenuItem(li.getMenuItemId()).orElseThrow(()-> new InvalidMenuItemIdException(li.getMenuItemId()));
             return new OrderLineItem(li.getMenuItemId(),om.getName(),om.getPrice(),li.getQuantity());
         }).collect(toList());
     }

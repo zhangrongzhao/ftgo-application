@@ -101,5 +101,11 @@
     <orderEntry type="library" name="Maven: io.eventuate.tram.sagas:eventuate-tram-sagas-spring-common:0.15.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: io.eventuate.common:eventuate-common-spring-jdbc:0.12.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: io.eventuate.common:eventuate-common-common-spring-jdbc:0.12.0.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.micrometer:micrometer-registry-prometheus:1.6.3" level="project" />
+    <orderEntry type="library" name="Maven: io.micrometer:micrometer-core:1.6.3" level="project" />
+    <orderEntry type="library" name="Maven: org.hdrhistogram:HdrHistogram:2.1.12" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.latencyutils:LatencyUtils:2.0.3" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_common:0.9.0" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient:0.9.0" level="project" />
   </component>
 </module>
