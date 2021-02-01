@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ftgo-application.iml" filepath="$PROJECT_DIR$/.idea/ftgo-application.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ftgo-common/ftgo-common.iml" filepath="$PROJECT_DIR$/ftgo-common/ftgo-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/ftgo-order-service/ftgo-order-service.iml" filepath="$PROJECT_DIR$/ftgo-order-service/ftgo-order-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ftgo-order-service-api/ftgo-order-service-api.iml" filepath="$PROJECT_DIR$/ftgo-order-service-api/ftgo-order-service-api.iml" />
     </modules>
   </component>
 </project>

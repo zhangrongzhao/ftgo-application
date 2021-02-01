@@ -39,7 +39,7 @@ public class OrderService {
     ){
          this.sagaInstanceFactory = sagaInstanceFactory;
          this.orderRepository = orderRepository;
-         //this.restaurantRepository=restaurantRepository;
+         this.restaurantRepository=restaurantRepository;
          this.createOrderSaga = createOrderSaga;
          //this.cancelOrderSaga=cancelOrderSaga;
          //this.reviseOrderSaga=reviseOrderSaga;
@@ -49,7 +49,7 @@ public class OrderService {
 
     @Transactional
     public Order createOrder(long consumerId,long restaurantId,DeliveryInformation deliveryInformation,List<MenuItemIdAndQuantity> lineItems){
-        Restaurant restaurant = restaurantRepository.findById(restaurantId).orElseThrow(()->new RestaurantNotFoundException(restaurantId));
+        /*Restaurant restaurant = restaurantRepository.findById(restaurantId).orElseThrow(()->new RestaurantNotFoundException(restaurantId));
         List<OrderLineItem> orderLineItems = makeOrderLineItems(lineItems,restaurant);
         ResultWithDomainEvents<Order, OrderDomainEvent> orderAndEvents = Order.createOrder(consumerId,restaurant,deliveryInformation,orderLineItems);
         Order order = orderAndEvents.result;
@@ -59,7 +59,8 @@ public class OrderService {
         CreateOrderSagaState data=new CreateOrderSagaState(order.getId(),orderDetails);
         sagaInstanceFactory.create(createOrderSaga,data);
         meterRegistry.ifPresent(mr->mr.counter("placed_orders").increment());
-        return order;
+        return order;*/
+        return null;
     }
 
     private List<OrderLineItem> makeOrderLineItems(List<MenuItemIdAndQuantity> lineItems, Restaurant restaurant){
@@ -90,10 +91,11 @@ public class OrderService {
 //    }
 
     private Order updateOrder(long orderId, Function<Order,List<OrderDomainEvent>> updater){
-        return orderRepository.findById(orderId).map(order->{
+       /* return orderRepository.findById(orderId).map(order->{
             orderAggregateEventPublisher.publish(order,updater.apply(order));
             return order;
-        }).orElseThrow(()->new OrderNotFoundException(orderId));
+        }).orElseThrow(()->new OrderNotFoundException(orderId));*/
+       return null;
     }
 
     public void approveOrder(long orderId){
