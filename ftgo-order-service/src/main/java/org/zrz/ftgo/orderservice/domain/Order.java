@@ -22,7 +22,8 @@ public class Order {
         Order order = new Order(consumerId,restaurant.getId(),deliveryInformation,orderLineItems);
         List<OrderDomainEvent> events = singletonList(new OrderCreated(
                 new OrderDetails(consumerId,restaurant.getId(),orderLineItems,order.getOrderTotal()),
-                deliveryInformation.getDeliveryAddress(),
+                null,
+                //deliveryInformation.getDeliveryAddress(),
                 restaurant.getName()));
         return new ResultWithDomainEvents<Order, OrderDomainEvent>(order,events);
     }
@@ -40,8 +41,8 @@ public class Order {
     private Long consumerId;
     private Long restaurantId;
 
-    @Embedded
-    private OrderLineItems orderLineItems;
+//    @Embedded
+//    private OrderLineItems orderLineItems;
 
     @Embedded
     private DeliveryInformation deliveryInformation;

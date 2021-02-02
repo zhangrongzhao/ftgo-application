@@ -52,5 +52,4 @@ public class DeliveryInformation {
     public void setDeliveryAddress(Address deliveryAddress) {
         this.deliveryAddress = deliveryAddress;
     }
-
 }

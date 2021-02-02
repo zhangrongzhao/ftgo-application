@@ -4,6 +4,9 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Address {
     private String street1;
     private String street2;
@@ -11,7 +14,7 @@ public class Address {
     private String state;
     private String zip;
 
-    private Address(){}
+    public Address(){}
 
     public Address(String street1,String street2,String city,String state,String zip){
         this.street1=street1;

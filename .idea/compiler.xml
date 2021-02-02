@@ -12,7 +12,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
       <module name="ftgo-application" target="1.5" />
-      <module name="ftgo-order-service" target="8" />
+      <module name="ftgo-order-service" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
