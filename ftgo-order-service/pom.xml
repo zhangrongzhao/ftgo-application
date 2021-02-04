@@ -165,5 +165,18 @@
             <version>5.3.3</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/io.eventuate.common/eventuate-common-spring-id -->
+        <dependency>
+            <groupId>io.eventuate.common</groupId>
+            <artifactId>eventuate-common-spring-id</artifactId>
+            <version>0.12.0.RELEASE</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.eventuate.common/eventuate-common-id -->
+        <dependency>
+            <groupId>io.eventuate.common</groupId>
+            <artifactId>eventuate-common-id</artifactId>
+            <version>0.12.0.RELEASE</version>
+        </dependency>
     </dependencies>
 </project>

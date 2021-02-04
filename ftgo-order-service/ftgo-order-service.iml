@@ -6,6 +6,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
+          <factory-entry name="Entities" value="df0acfb8-619c-45e6-aaae-25a7a01ba233" />
           <factory-entry name="entityManagerFactory" value="df0acfb8-619c-45e6-aaae-25a7a01ba233" />
         </datasource-mapping>
         <naming-strategy-map />
@@ -72,7 +73,6 @@
     <orderEntry type="library" name="Maven: io.eventuate.tram.core:eventuate-tram-spring-commands:0.26.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: io.eventuate.tram.core:eventuate-tram-commands:0.26.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: io.eventuate.common:eventuate-common-json-mapper:0.12.0.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: io.eventuate.common:eventuate-common-id:0.12.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: io.eventuate.tram.core:eventuate-tram-spring-events:0.26.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: io.eventuate.tram.core:eventuate-tram-spring-events-publisher:0.26.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: io.eventuate.tram.core:eventuate-tram-spring-events-common:0.26.1.RELEASE" level="project" />
@@ -123,5 +123,7 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.3" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.common:eventuate-common-spring-id:0.12.0.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.common:eventuate-common-id:0.12.0.RELEASE" level="project" />
   </component>
 </module>
