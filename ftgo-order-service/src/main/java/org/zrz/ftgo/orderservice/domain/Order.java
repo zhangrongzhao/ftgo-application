@@ -41,8 +41,8 @@ public class Order {
     private Long consumerId;
     private Long restaurantId;
 
-//    @Embedded
-//    private OrderLineItems orderLineItems;
+    @Embedded
+    private OrderLineItems orderLineItems;
 
     @Embedded
     private DeliveryInformation deliveryInformation;

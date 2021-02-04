@@ -13,7 +13,7 @@ public class OrderLineItems {
     @CollectionTable(name="order_line_items")
     private List<OrderLineItem> lineItems;
 
-    private OrderLineItems(){ }
+    public OrderLineItems(){ }
     public OrderLineItems(List<OrderLineItem> lineItems){
         this.lineItems = lineItems;
     }
