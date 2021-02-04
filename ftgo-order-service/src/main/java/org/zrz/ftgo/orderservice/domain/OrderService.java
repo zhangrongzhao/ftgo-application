@@ -5,6 +5,7 @@ import io.eventuate.tram.sagas.orchestration.SagaInstanceFactory;
 import io.micrometer.core.instrument.MeterRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 import org.zrz.ftgo.orderservice.events.OrderDomainEvent;
 import org.zrz.ftgo.orderservice.sagas.createorder.CreateOrderSaga;
 import org.zrz.ftgo.orderservice.sagas.createorder.CreateOrderSagaState;
@@ -34,8 +35,8 @@ public class OrderService {
                         CreateOrderSaga createOrderSaga,
                         //CancelOrderSaga cancelOrderSaga,
                         //ReviseOrderSaga reviseOrderSaga,
-                        OrderDomainEventPublisher orderAggregateEventPublisher//,
-                        //Optional<MeterRegistry> meterRegistry
+                        OrderDomainEventPublisher orderAggregateEventPublisher,
+                        Optional<MeterRegistry> meterRegistry
     ){
          this.sagaInstanceFactory = sagaInstanceFactory;
          this.orderRepository = orderRepository;
