@@ -172,11 +172,36 @@
             <version>0.12.0.RELEASE</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/io.eventuate.common/eventuate-common-id -->
-  <!--      <dependency>
-            <groupId>io.eventuate.common</groupId>
-            <artifactId>eventuate-common-id</artifactId>
-            <version>0.12.0.RELEASE</version>
-        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/io.eventuate.tram.core/eventuate-tram-messaging-producer-common -->
+        <dependency>
+            <groupId>io.eventuate.tram.core</groupId>
+            <artifactId>eventuate-tram-messaging-producer-common</artifactId>
+            <version>0.26.1.RELEASE</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.eventuate.tram.core/eventuate-tram-spring-messaging-producer-common -->
+        <dependency>
+            <groupId>io.eventuate.tram.core</groupId>
+            <artifactId>eventuate-tram-spring-messaging-producer-common</artifactId>
+            <version>0.26.1.RELEASE</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.eventuate.tram.core/eventuate-tram-in-memory -->
+        <dependency>
+            <groupId>io.eventuate.tram.core</groupId>
+            <artifactId>eventuate-tram-in-memory</artifactId>
+            <version>0.26.1.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.eventuate.tram.core/eventuate-tram-spring-in-memory -->
+        <dependency>
+            <groupId>io.eventuate.tram.core</groupId>
+            <artifactId>eventuate-tram-spring-in-memory</artifactId>
+            <version>0.26.1.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+
+
     </dependencies>
 </project>
